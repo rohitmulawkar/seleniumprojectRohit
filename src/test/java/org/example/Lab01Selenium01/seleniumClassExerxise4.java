@@ -19,7 +19,7 @@ public class seleniumClassExerxise4 {
         WebDriver driver =new ChromeDriver();
         driver.get("https://www.idrive360.com/enterprise/login");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
        // driver.navigate().to("https://www.bing.com");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
       // driver.findElement(By.xpath("//input[@id='username']")).click();
@@ -28,8 +28,11 @@ public class seleniumClassExerxise4 {
        driver.findElement(By.xpath("//*[@class='id-btn id-info-btn-frm']")).click();
       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(25));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"id-main-container\"]/app-account/section/div[2]/div[2]/h2")));
-      String orgtxt =driver.findElement(By.xpath("//div[@class='intid-card-cont']//*[text()='Your free trial has expired']")).getText();
-       System.out.println("Your free trial has expired");
+        WebElement str1= driver.findElement(By.xpath("//*[@class='id-card-title']"));
+        String str2= str1.getText();;
+        //driver.findElement(By.xpath("//div[@class='intid-card-cont']//*[text()='Your free trial has expired']"));
+       System.out.println(str2);
+       Assert.assertEquals(str2,"Your free trial has expired");
 
        // driver.findElement()//*[@class="id-btn id-info-btn-frm"]
 
